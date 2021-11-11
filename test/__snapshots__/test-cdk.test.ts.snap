@@ -1,0 +1,424 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test 1`] = `
+Object {
+  "Parameters": Object {
+    "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": Object {
+      "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2",
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+    },
+  },
+  "Resources": Object {
+    "Instance255F35265": Object {
+      "DependsOn": Array [
+        "ec2Role38AB65C0",
+      ],
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "IamInstanceProfile": Object {
+          "Ref": "Instance2InstanceProfile582F915C",
+        },
+        "ImageId": Object {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
+        },
+        "InstanceType": "t2.micro",
+        "SecurityGroupIds": Array [
+          Object {
+            "Fn::GetAtt": Array [
+              "SecurityGroup23BE86BB7",
+              "GroupId",
+            ],
+          },
+        ],
+        "SubnetId": Object {
+          "Ref": "NewsBlogVPCPrivateSubnet1SubnetDDAE3CBA",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/Instance2",
+          },
+        ],
+        "UserData": Object {
+          "Fn::Base64": "#!/bin/bash",
+        },
+      },
+      "Type": "AWS::EC2::Instance",
+    },
+    "Instance2InstanceProfile582F915C": Object {
+      "Properties": Object {
+        "Roles": Array [
+          Object {
+            "Ref": "ec2Role38AB65C0",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::InstanceProfile",
+    },
+    "InstanceC1063A87": Object {
+      "DependsOn": Array [
+        "ec2Role38AB65C0",
+      ],
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "IamInstanceProfile": Object {
+          "Ref": "InstanceInstanceProfileAB5AEF02",
+        },
+        "ImageId": Object {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
+        },
+        "InstanceType": "t2.micro",
+        "SecurityGroupIds": Array [
+          Object {
+            "Fn::GetAtt": Array [
+              "SecurityGroupDD263621",
+              "GroupId",
+            ],
+          },
+        ],
+        "SubnetId": Object {
+          "Ref": "NewsBlogVPCPrivateSubnet1SubnetDDAE3CBA",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/Instance",
+          },
+        ],
+        "UserData": Object {
+          "Fn::Base64": "#!/bin/bash",
+        },
+      },
+      "Type": "AWS::EC2::Instance",
+    },
+    "InstanceInstanceProfileAB5AEF02": Object {
+      "Properties": Object {
+        "Roles": Array [
+          Object {
+            "Ref": "ec2Role38AB65C0",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::InstanceProfile",
+    },
+    "NewsBlogVPCC925B703": Object {
+      "Properties": Object {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/NewsBlogVPC",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::VPC",
+    },
+    "NewsBlogVPCIGW3E6E8EA1": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/NewsBlogVPC",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::InternetGateway",
+    },
+    "NewsBlogVPCPrivateSubnet1DefaultRoute76D65C68": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "NewsBlogVPCPublicSubnet1NATGateway8B3D0826",
+        },
+        "RouteTableId": Object {
+          "Ref": "NewsBlogVPCPrivateSubnet1RouteTable57BAED2A",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "NewsBlogVPCPrivateSubnet1RouteTable57BAED2A": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/NewsBlogVPC/PrivateSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "NewsBlogVPCC925B703",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "NewsBlogVPCPrivateSubnet1RouteTableAssociationFA0EB211": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "NewsBlogVPCPrivateSubnet1RouteTable57BAED2A",
+        },
+        "SubnetId": Object {
+          "Ref": "NewsBlogVPCPrivateSubnet1SubnetDDAE3CBA",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "NewsBlogVPCPrivateSubnet1SubnetDDAE3CBA": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.128.0/17",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/NewsBlogVPC/PrivateSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "NewsBlogVPCC925B703",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "NewsBlogVPCPublicSubnet1DefaultRouteDFBB2315": Object {
+      "DependsOn": Array [
+        "NewsBlogVPCVPCGWE10138BA",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "NewsBlogVPCIGW3E6E8EA1",
+        },
+        "RouteTableId": Object {
+          "Ref": "NewsBlogVPCPublicSubnet1RouteTableDE8259F4",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "NewsBlogVPCPublicSubnet1EIPEAB0AD94": Object {
+      "Properties": Object {
+        "Domain": "vpc",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/NewsBlogVPC/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "NewsBlogVPCPublicSubnet1NATGateway8B3D0826": Object {
+      "Properties": Object {
+        "AllocationId": Object {
+          "Fn::GetAtt": Array [
+            "NewsBlogVPCPublicSubnet1EIPEAB0AD94",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": Object {
+          "Ref": "NewsBlogVPCPublicSubnet1Subnet17D32EFA",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/NewsBlogVPC/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "NewsBlogVPCPublicSubnet1RouteTableAssociation1CEA80E2": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "NewsBlogVPCPublicSubnet1RouteTableDE8259F4",
+        },
+        "SubnetId": Object {
+          "Ref": "NewsBlogVPCPublicSubnet1Subnet17D32EFA",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "NewsBlogVPCPublicSubnet1RouteTableDE8259F4": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/NewsBlogVPC/PublicSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "NewsBlogVPCC925B703",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "NewsBlogVPCPublicSubnet1Subnet17D32EFA": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.0.0/17",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "MyTestStack/NewsBlogVPC/PublicSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "NewsBlogVPCC925B703",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "NewsBlogVPCVPCGWE10138BA": Object {
+      "Properties": Object {
+        "InternetGatewayId": Object {
+          "Ref": "NewsBlogVPCIGW3E6E8EA1",
+        },
+        "VpcId": Object {
+          "Ref": "NewsBlogVPCC925B703",
+        },
+      },
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+    },
+    "SecurityGroup23BE86BB7": Object {
+      "Properties": Object {
+        "GroupDescription": "For Tunnel Only",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "NewsBlogVPCC925B703",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "SecurityGroup2fromMyTestStackSecurityGroupED223A5A80CE49DD79": Object {
+      "Properties": Object {
+        "Description": "for http server",
+        "FromPort": 80,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "SecurityGroup23BE86BB7",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "SecurityGroupDD263621",
+            "GroupId",
+          ],
+        },
+        "ToPort": 80,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "SecurityGroupDD263621": Object {
+      "Properties": Object {
+        "GroupDescription": "For SSM only",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "NewsBlogVPCC925B703",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "ec2Role38AB65C0": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "ec2.",
+                      Object {
+                        "Ref": "AWS::URLSuffix",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSSMManagedInstanceCore",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;
